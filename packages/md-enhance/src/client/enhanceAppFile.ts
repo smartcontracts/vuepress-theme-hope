@@ -20,8 +20,11 @@ const enhanceApp: EnhanceApp = ({ Vue }) => {
   if (
     MARKDOWN_ENHANCE_OPTIONS.presentation ||
     MARKDOWN_ENHANCE_OPTIONS.enableAll
-  )
+  ) {
     Vue.component("Presentation", Presentation);
+    if (REVEAL_PLUGINS.includes("chalkboard"))
+      void import("@mr-hope/vuepress-shared-utils/styles/font-awesome.styl");
+  }
 };
 
 export default enhanceApp;
